@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 @Transactional
-public class WriteTodoService {
+public class TodoService {
 
     private TodoRepository todoRepository;
 

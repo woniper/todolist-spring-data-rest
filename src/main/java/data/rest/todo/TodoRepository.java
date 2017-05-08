@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
  * Created by woniper on 2017. 5. 7..
  */
 @Repository
-public interface TodoRepository extends PagingAndSortingRepository<Todo, Long> {
-}
+public interface TodoRepository extends PagingAndSortingRepository<Todo, Long> {}

@@ -2,7 +2,7 @@ package data.rest.web;
 
 import data.rest.todo.Todo;
 import data.rest.todo.TodoRepository;
-import data.rest.todo.WriteTodoService;
+import data.rest.todo.TodoService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +25,7 @@ public class TodoController {
 
     private TodoRepository todoRepository;
 
-    private WriteTodoService todoService;
+    private TodoService todoService;
 
     @GetMapping("/{id}")
     public ResponseEntity<?> get(@PathVariable("id") Todo todo) {
