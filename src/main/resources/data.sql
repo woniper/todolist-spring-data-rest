@@ -1,0 +1,1 @@
+INSERT INTO member(username, first_name, last_name, last_modified_date) VALUES ('woniper', 'kyung-won', 'lee', now())

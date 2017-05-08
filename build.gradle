@@ -1,0 +1,37 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	compile('org.springframework.data:spring-data-rest-hal-browser')
+	compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.8')
+
+	runtime('com.h2database:h2')
+	compile('org.projectlombok:lombok')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.assertj:assertj-core:3.6.2')
+
+}
