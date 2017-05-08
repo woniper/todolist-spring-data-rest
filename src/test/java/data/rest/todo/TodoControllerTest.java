@@ -77,11 +77,11 @@ public class TodoControllerTest {
     public void todo_id_조회() throws Exception {
         // when
         ResponseEntity<Todo> responseEntity = restTemplate.getForEntity("/todoes/{id}", Todo.class, todo.getId());
+        Todo todo = responseEntity.getBody();
 
         // then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        Todo body = responseEntity.getBody();
-        assertThat(body).isEqualTo(todo);
+        assertThat(this.todo).isEqualTo(todo);
     }
 
     @Test

@@ -3,8 +3,8 @@ package data.rest.web;
 import data.rest.todo.Todo;
 import data.rest.todo.TodoRepository;
 import data.rest.todo.WriteTodoService;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -18,15 +18,13 @@ import java.time.LocalDate;
 /**
  * Created by woniper on 2017. 5. 8..
  */
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 @Controller
 @RequestMapping("/todoes")
 public class TodoController {
 
-    @Autowired
     private TodoRepository todoRepository;
 
-    @Autowired
     private WriteTodoService todoService;
 
     @GetMapping("/{id}")

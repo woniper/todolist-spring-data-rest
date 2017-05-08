@@ -3,7 +3,7 @@ package data.rest.todo;
 import data.rest.member.Member;
 import data.rest.member.MemberRepository;
 import data.rest.web.TodoController;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,14 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by woniper on 2017. 5. 8..
  */
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 @Transactional
 public class WriteTodoService {
 
-    @Autowired
     private TodoRepository todoRepository;
 
-    @Autowired
     private MemberRepository memberRepository;
 
     public Todo todo(TodoController.TodoDto todoDto) {
