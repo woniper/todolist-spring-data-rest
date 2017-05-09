@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -28,9 +29,11 @@ import java.util.stream.StreamSupport;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
+ * TodoController 테스트
+ * @see TodoController
  * Created by woniper on 2017. 5. 8..
  */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
 @Rollback
 public class TodoControllerTest {
@@ -56,11 +59,11 @@ public class TodoControllerTest {
     @After
     public void tearDown() throws Exception {
         this.todoRepository.deleteAll();
-        this.memberRepository.delete(this.member);
+        this.memberRepository.deleteAll();
     }
 
     @Test
-    public void todo등록() throws Exception {
+    public void todo_등록() throws Exception {
         // given
         TodoController.TodoDto todoDto = new TodoController.TodoDto("test todo", LocalDate.now(), this.member.getUsername());
         HttpEntity<TodoController.TodoDto> httpEntity = new HttpEntity<>(todoDto);
