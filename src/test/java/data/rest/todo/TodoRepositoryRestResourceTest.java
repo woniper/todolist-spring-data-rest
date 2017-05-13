@@ -80,6 +80,24 @@ public class TodoRepositoryRestResourceTest {
     }
 
     @Test
+    public void todo_오늘_이전_날짜로_등록_시_throw_RunTimeException() throws Exception {
+        // given
+        Map<String, Object> map = new HashMap<>();
+        map.put("todo", "test todo");
+        map.put("dueDate", LocalDate.now().minusDays(3).toString());
+        map.put("member", "/api/members/" + this.member.getUsername());
+
+        String requestBody = mapToJson(map);
+        HttpEntity<String> httpEntity = getJsonHttpEntity(requestBody);
+
+        // when
+        ResponseEntity<Todo> responseEntity = restTemplate.exchange("/api/todoes", HttpMethod.POST, httpEntity, Todo.class);
+
+        // then
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Test
     public void todo_id_조회() throws Exception {
         // given
         Todo newTodo = createTodo();

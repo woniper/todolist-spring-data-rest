@@ -1,5 +1,6 @@
 package data.rest.todo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import data.rest.AbstractEntity;
 import data.rest.member.Member;
 import data.rest.todo.web.TodoDto;
@@ -61,6 +62,7 @@ public class Todo extends AbstractEntity {
         return this;
     }
 
+    @JsonIgnore
     public TodoDto getDto() {
         return new TodoDto(getId(), getTodo(), getDueDate().toString(),
                 getMember().getId(), getMember().getUsername());
