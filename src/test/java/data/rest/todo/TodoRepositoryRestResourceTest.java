@@ -64,7 +64,7 @@ public class TodoRepositoryRestResourceTest {
         Map<String, Object> map = new HashMap<>();
         map.put("todo", "test todo");
         map.put("dueDate", LocalDate.now().plusDays(3).toString());
-        map.put("member", "/api/members/" + this.member.getId());
+        map.put("member", "/api/members/" + this.member.getUsername());
 
         String requestBody = mapToJson(map);
         HttpEntity<String> httpEntity = getJsonHttpEntity(requestBody);
