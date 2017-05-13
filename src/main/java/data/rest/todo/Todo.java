@@ -21,10 +21,10 @@ import java.time.LocalDate;
 @ToString
 public class Todo extends AbstractEntity {
 
-    @Column(name = "todo")
+    @Column(name = "todo", nullable = false)
     private String todo;
 
-    @Column(nullable = false)
+    @Column(name = "due_date", nullable = false)
     private LocalDate dueDate;
 
     @ManyToOne(optional = false)

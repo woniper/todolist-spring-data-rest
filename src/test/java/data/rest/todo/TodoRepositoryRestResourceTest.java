@@ -15,10 +15,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.hateoas.PagedResources;
 import org.springframework.hateoas.Resource;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -109,9 +106,6 @@ public class TodoRepositoryRestResourceTest {
         // then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(todo.getTodo()).isEqualTo(newTodo.getTodo());
-        assertThat(resource.hasLink("member")).isTrue();
-        assertThat(resource.getLink("member").getHref())
-                .endsWith(String.format("/api/todoes/%d/member", newTodo.getId()));
     }
 
     @Test
@@ -200,9 +194,36 @@ public class TodoRepositoryRestResourceTest {
         assertThat(todoRepository.findOne(todoId)).isNull();
     }
 
+    @Test
+    public void todolist_조회_후_제일_처음_todo_수정() throws Exception {
+        // given : list 조회
+        todoRepository.deleteAll();
+        List<Todo> todoList = createTodoList();
+        ResponseEntity<PagedResources<Todo>> responseEntity = getPagedResourcesResponseEntity("/api/todoes");
+        PagedResources<Todo> todoBody = responseEntity.getBody();
+        List<Todo> todoes = new ArrayList<>(todoBody.getContent());
+        Todo todo = todoList.get(0);
+
+        // when : 첫 번째 todo 수정
+        Map<String, Object> bodyMap = new HashMap<>();
+        bodyMap.put("todo", "update todo");
+        bodyMap.put("dueDate", LocalDate.now().plusDays(7).toString());
+        HttpEntity<?> httpEntity = getJsonHttpEntity(mapToJson(bodyMap));
+
+        ResponseEntity<Resource<Todo>> updateResponse = restTemplate.exchange("/api/todoes/{id}", HttpMethod.PUT, httpEntity, new ParameterizedTypeReference<Resource<Todo>>() {
+        }, todo.getId());
+        Resource<Todo> updateTodo = updateResponse.getBody();
+
+        // then
+        assertThat(todoList.size()).isEqualTo(todoes.size());
+        assertThat(updateResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(updateTodo.getContent().getTodo()).isEqualTo(bodyMap.get("todo"));
+        assertThat(updateTodo.getContent().getDueDate().toString()).isEqualTo(bodyMap.get("dueDate"));
+    }
+
     private HttpEntity<String> getJsonHttpEntity(String requestBody) {
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-        headers.add("Content-Type", "application/json");
+        headers.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
         return new HttpEntity<>(requestBody, headers);
     }
 
