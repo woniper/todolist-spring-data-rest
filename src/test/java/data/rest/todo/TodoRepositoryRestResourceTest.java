@@ -221,6 +221,27 @@ public class TodoRepositoryRestResourceTest {
         assertThat(updateTodo.getContent().getDueDate().toString()).isEqualTo(bodyMap.get("dueDate"));
     }
 
+    @Test
+    public void a로_시작하는_todolist_조회() throws Exception {
+        // given
+        this.todoRepository.deleteAll();
+        List<Todo> todoList = StreamSupport.stream(this.todoRepository.save(Arrays.asList(
+                new Todo(this.member, "a1"), new Todo(this.member, "a2"), new Todo(this.member, "b1"))).spliterator(),
+                false)
+                .filter(todo -> todo.getTodo().startsWith("a"))
+                .collect(Collectors.toList());
+
+        assertThat(todoList.size()).isEqualTo(2);
+
+        // when
+        ResponseEntity<PagedResources<Todo>> responseEntity = getPagedResourcesResponseEntity("/api/todoes/search/starts-todo?todo={todo}", "a");
+        PagedResources<Todo> pagedResources = responseEntity.getBody();
+
+        // then
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(pagedResources.getContent().size()).isEqualTo(todoList.size());
+    }
+
     private HttpEntity<String> getJsonHttpEntity(String requestBody) {
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
         headers.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
