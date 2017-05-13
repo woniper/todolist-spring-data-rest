@@ -2,6 +2,7 @@ package data.rest.todo;
 
 import data.rest.AbstractEntity;
 import data.rest.member.Member;
+import data.rest.todo.web.TodoDto;
 import data.rest.web.TodoController;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -58,5 +59,10 @@ public class Todo extends AbstractEntity {
         setTodo(todoDto.getTodo());
         setDueDate(todoDto.getDueDate());
         return this;
+    }
+
+    public TodoDto getDto() {
+        return new TodoDto(getId(), getTodo(), getDueDate().toString(),
+                getMember().getId(), getMember().getUsername());
     }
 }
