@@ -20,6 +20,11 @@ public class TodoService {
 
     private MemberRepository memberRepository;
 
+    public Todo todo(String username, Todo todo) {
+        Member member = memberRepository.findByUsername(username);
+        return todoRepository.save(new Todo(member, todo.getDueDate(), todo.getTodo()));
+    }
+
     public Todo todo(TodoController.TodoDto todoDto) {
         Member member = memberRepository.findByUsername(todoDto.getUsername());
         return todoRepository.save(new Todo(member, todoDto.getDueDate(), todoDto.getTodo()));

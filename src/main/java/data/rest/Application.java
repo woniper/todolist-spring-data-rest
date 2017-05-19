@@ -24,8 +24,10 @@ public class Application {
 	public CommandLineRunner commandLineRunner(MemberRepository memberRepository, TodoRepository todoRepository) {
 		return args -> {
 			Member woniper = memberRepository.findByUsername("woniper");
-			todoRepository.save(new Todo(woniper, "나는 todo list에요"));
-			todoRepository.save(new Todo(woniper, LocalDate.now().plusDays(14), "todo list를 만들자."));
+			todoRepository.save(new Todo(woniper, "spring camp에서 발표하기"));
+			todoRepository.save(new Todo(woniper, LocalDate.now().plusDays(10), "slipp에서 발표하기"));
+			todoRepository.save(new Todo(woniper, LocalDate.now().plusDays(14), "운동하기"));
+			todoRepository.save(new Todo(woniper, LocalDate.now().plusDays(20), "책읽기"));
 		};
 	}
 }

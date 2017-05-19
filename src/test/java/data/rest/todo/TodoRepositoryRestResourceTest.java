@@ -1,9 +1,9 @@
 package data.rest.todo;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import data.rest.member.Member;
 import data.rest.member.MemberRepository;
+import data.rest.todo.utils.TestJsonUtils;
+import data.rest.todo.utils.TestRequestUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,10 +15,11 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.hateoas.PagedResources;
 import org.springframework.hateoas.Resource;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -66,8 +67,8 @@ public class TodoRepositoryRestResourceTest {
         map.put("dueDate", LocalDate.now().plusDays(3).toString());
         map.put("member", "/api/members/" + this.member.getUsername());
 
-        String requestBody = mapToJson(map);
-        HttpEntity<String> httpEntity = getJsonHttpEntity(requestBody);
+        String requestBody = TestJsonUtils.objectToJson(map);
+        HttpEntity<String> httpEntity = TestRequestUtils.getJsonHttpEntity(requestBody);
 
         // when
         ResponseEntity<Todo> responseEntity = restTemplate.exchange("/api/todoes", HttpMethod.POST, httpEntity, Todo.class);
@@ -87,8 +88,8 @@ public class TodoRepositoryRestResourceTest {
         map.put("dueDate", LocalDate.now().minusDays(3).toString());
         map.put("member", "/api/members/" + this.member.getUsername());
 
-        String requestBody = mapToJson(map);
-        HttpEntity<String> httpEntity = getJsonHttpEntity(requestBody);
+        String requestBody = TestJsonUtils.objectToJson(map);
+        HttpEntity<String> httpEntity = TestRequestUtils.getJsonHttpEntity(requestBody);
 
         // when
         ResponseEntity<Todo> responseEntity = restTemplate.exchange("/api/todoes", HttpMethod.POST, httpEntity, Todo.class);
@@ -183,8 +184,8 @@ public class TodoRepositoryRestResourceTest {
         map.put("todo", "update todo");
         map.put("dueDate", newTodo.getDueDate().plusDays(7).toString());
 
-        String jsonStr = mapToJson(map);
-        HttpEntity<String> httpEntity = getJsonHttpEntity(jsonStr);
+        String jsonStr = TestJsonUtils.objectToJson(map);
+        HttpEntity<String> httpEntity = TestRequestUtils.getJsonHttpEntity(jsonStr);
 
         // when
         ResponseEntity<Resource<Todo>> responseEntity = restTemplate.exchange("/api/todoes/{id}", HttpMethod.PUT, httpEntity, new ParameterizedTypeReference<Resource<Todo>>() {}, newTodo.getId());
@@ -226,7 +227,7 @@ public class TodoRepositoryRestResourceTest {
         Map<String, Object> bodyMap = new HashMap<>();
         bodyMap.put("todo", "update todo");
         bodyMap.put("dueDate", LocalDate.now().plusDays(7).toString());
-        HttpEntity<?> httpEntity = getJsonHttpEntity(mapToJson(bodyMap));
+        HttpEntity<?> httpEntity = TestRequestUtils.getJsonHttpEntity(TestJsonUtils.objectToJson(bodyMap));
 
         ResponseEntity<Resource<Todo>> updateResponse = restTemplate.exchange("/api/todoes/{id}", HttpMethod.PUT, httpEntity, new ParameterizedTypeReference<Resource<Todo>>() {
         }, todo.getId());
@@ -258,16 +259,6 @@ public class TodoRepositoryRestResourceTest {
         // then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(pagedResources.getContent().size()).isEqualTo(todoList.size());
-    }
-
-    private HttpEntity<String> getJsonHttpEntity(String requestBody) {
-        MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-        headers.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
-        return new HttpEntity<>(requestBody, headers);
-    }
-
-    private String mapToJson(Map<String, Object> map) throws JsonProcessingException {
-        return new ObjectMapper().writeValueAsString(map);
     }
 
     /**
