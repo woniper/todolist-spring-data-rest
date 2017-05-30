@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import data.rest.AbstractEntity;
 import data.rest.member.Member;
 import data.rest.todo.web.TodoDto;
-import data.rest.web.TodoController;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -56,9 +55,9 @@ public class Todo extends AbstractEntity {
         this.dueDate = dueDate;
     }
 
-    public Todo update(TodoController.TodoDto todoDto) {
-        setTodo(todoDto.getTodo());
-        setDueDate(todoDto.getDueDate());
+    public Todo update(Todo todo) {
+        setTodo(todo.getTodo());
+        setDueDate(todo.getDueDate());
         return this;
     }
 

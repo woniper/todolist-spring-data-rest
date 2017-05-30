@@ -2,6 +2,7 @@ package data.rest;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 @Getter
 @MappedSuperclass
 @EqualsAndHashCode
+@NoArgsConstructor
 public abstract class AbstractEntity {
 
     @Id
@@ -23,6 +25,4 @@ public abstract class AbstractEntity {
 
     @LastModifiedDate
     private LocalDateTime lastModifiedDate = LocalDateTime.now();
-
-    public AbstractEntity() {}
 }

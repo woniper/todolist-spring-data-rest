@@ -32,7 +32,7 @@ public class TodoService {
 
     public Todo update(Long todoId, TodoController.TodoDto todoDto) {
         Todo todo = todoRepository.findOne(todoId);
-        todo.update(todoDto);
+        todo.update(new Todo(todo.getMember(), todoDto.getDueDate(), todoDto.getTodo()));
         return todo;
     }
 }

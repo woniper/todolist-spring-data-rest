@@ -28,11 +28,13 @@ public class TodoListRepositoryConfig extends RepositoryRestConfigurerAdapter {
     @Override
     public void configureConversionService(ConfigurableConversionService conversionService) {
         super.configureConversionService(conversionService);
+//        conversionService.addConverter();
     }
 
     @Override
     public void configureValidatingRepositoryEventListener(ValidatingRepositoryEventListener validatingListener) {
         super.configureValidatingRepositoryEventListener(validatingListener);
+//        validatingListener.addValidator()
     }
 
     @Override
