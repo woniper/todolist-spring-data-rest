@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.springframework.web.method.support.HandlerMethodArgumentResolver</OriginalElement>
+  <nodes>
+    <node x="115.25" y="80.0">org.springframework.data.rest.webmvc.ServerHttpRequestMethodArgumentResolver</node>
+    <node x="938.75" y="160.0">org.springframework.data.rest.webmvc.config.RootResourceInformationHandlerMethodArgumentResolver</node>
+    <node x="526.25" y="0.0">org.springframework.web.method.support.HandlerMethodArgumentResolver</node>
+    <node x="0.0" y="240.0">org.springframework.data.rest.webmvc.config.PersistentEntityResourceHandlerMethodArgumentResolver</node>
+    <node x="996.25" y="240.0">org.springframework.data.rest.webmvc.config.QuerydslAwareRootResourceInformationHandlerMethodArgumentResolver</node>
+    <node x="456.25" y="80.0">org.springframework.data.rest.webmvc.config.PersistentEntityResourceAssemblerArgumentResolver</node>
+    <node x="867.25" y="80.0">org.springframework.data.rest.webmvc.config.ResourceMetadataHandlerMethodArgumentResolver</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.springframework.data.rest.webmvc.config.RootResourceInformationHandlerMethodArgumentResolver" target="org.springframework.web.method.support.HandlerMethodArgumentResolver">
+      <point x="103.0" y="-15.0" />
+      <point x="1247.75" y="135.0" />
+      <point x="1240.75" y="135.0" />
+      <point x="1240.75" y="50.0" />
+      <point x="752.15" y="50.0" />
+      <point x="100.39999999999998" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.config.QuerydslAwareRootResourceInformationHandlerMethodArgumentResolver" target="org.springframework.data.rest.webmvc.config.RootResourceInformationHandlerMethodArgumentResolver">
+      <point x="0.0" y="-15.0" />
+      <point x="103.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.config.PersistentEntityResourceHandlerMethodArgumentResolver" target="org.springframework.web.method.support.HandlerMethodArgumentResolver">
+      <point x="-104.75" y="-15.0" />
+      <point x="104.75" y="50.0" />
+      <point x="551.35" y="50.0" />
+      <point x="-100.39999999999998" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.ServerHttpRequestMethodArgumentResolver" target="org.springframework.web.method.support.HandlerMethodArgumentResolver">
+      <point x="0.0" y="-15.0" />
+      <point x="275.75" y="60.0" />
+      <point x="601.55" y="60.0" />
+      <point x="-50.200000000000045" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.config.ResourceMetadataHandlerMethodArgumentResolver" target="org.springframework.web.method.support.HandlerMethodArgumentResolver">
+      <point x="0.0" y="-15.0" />
+      <point x="1048.75" y="60.0" />
+      <point x="701.95" y="60.0" />
+      <point x="50.200000000000045" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.config.PersistentEntityResourceAssemblerArgumentResolver" target="org.springframework.web.method.support.HandlerMethodArgumentResolver">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9184210526315789" x="749.6103151862465" y="135.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

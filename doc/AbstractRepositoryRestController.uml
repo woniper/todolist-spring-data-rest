@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.springframework.data.rest.webmvc.RepositoryController</OriginalElement>
+  <nodes>
+    <node x="783.1666666666666" y="0.0">org.springframework.context.ApplicationEventPublisherAware</node>
+    <node x="0.0" y="110.0">org.springframework.data.rest.webmvc.RepositoryController</node>
+    <node x="441.5" y="0.0">org.springframework.data.rest.webmvc.AbstractRepositoryRestController</node>
+    <node x="156.54761904761904" y="0.0">org.springframework.data.rest.webmvc.RepositoryRestController</node>
+    <node x="208.0" y="110.0">org.springframework.data.rest.webmvc.RepositorySearchController</node>
+    <node x="785.0" y="110.0">org.springframework.data.rest.webmvc.RepositoryEntityController</node>
+    <node x="458.0" y="110.0">org.springframework.data.rest.webmvc.RepositoryPropertyReferenceController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.springframework.data.rest.webmvc.RepositoryPropertyReferenceController" target="org.springframework.data.rest.webmvc.RepositoryRestController">
+      <point x="-102.33333333333331" y="-15.0" />
+      <point x="509.1666666666667" y="70.0" />
+      <point x="291.54761904761904" y="70.0" />
+      <point x="27.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.RepositoryPropertyReferenceController" target="org.springframework.data.rest.webmvc.AbstractRepositoryRestController">
+      <point x="0.0" y="-15.0" />
+      <point x="34.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.RepositoryEntityController" target="org.springframework.data.rest.webmvc.RepositoryRestController">
+      <point x="-76.66666666666674" y="-15.0" />
+      <point x="823.3333333333333" y="60.0" />
+      <point x="345.54761904761904" y="60.0" />
+      <point x="81.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.RepositoryEntityController" target="org.springframework.context.ApplicationEventPublisherAware">
+      <point x="76.66666666666663" y="-15.0" />
+      <point x="64.5" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.RepositoryController" target="org.springframework.data.rest.webmvc.AbstractRepositoryRestController">
+      <point x="47.0" y="-15.0" />
+      <point x="141.0" y="80.0" />
+      <point x="475.5" y="80.0" />
+      <point x="-102.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.RepositorySearchController" target="org.springframework.data.rest.webmvc.AbstractRepositoryRestController">
+      <point x="57.5" y="-15.0" />
+      <point x="380.5" y="90.0" />
+      <point x="543.5" y="90.0" />
+      <point x="-34.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.RepositoryEntityController" target="org.springframework.data.rest.webmvc.AbstractRepositoryRestController">
+      <point x="0.0" y="-15.0" />
+      <point x="900.0" y="50.0" />
+      <point x="679.5" y="50.0" />
+      <point x="102.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.RepositoryPropertyReferenceController" target="org.springframework.context.ApplicationEventPublisherAware">
+      <point x="102.33333333333337" y="-15.0" />
+      <point x="713.8333333333334" y="90.0" />
+      <point x="847.6666666666666" y="90.0" />
+      <point x="-64.5" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.RepositoryController" target="org.springframework.data.rest.webmvc.RepositoryRestController">
+      <point x="-47.0" y="-15.0" />
+      <point x="47.0" y="70.0" />
+      <point x="183.54761904761904" y="70.0" />
+      <point x="-81.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.data.rest.webmvc.RepositorySearchController" target="org.springframework.data.rest.webmvc.RepositoryRestController">
+      <point x="-57.5" y="-15.0" />
+      <point x="265.5" y="70.0" />
+      <point x="237.54761904761904" y="70.0" />
+      <point x="-27.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="678.0" y="90.5" />
+  <SelectedNodes>
+    <node>org.springframework.data.rest.webmvc.RepositoryController</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
